@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Biblioteca em HTML</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: uma coluna estreita, título e dois acessos de demonstração */
+:root{--bg:#FBF7F2;--fg:#2F3E46;--mut:#6B7A74;--card:#FFFFFF;--line:#E4DCD0;--btn:#F2C94C;--btn-fg:#4A3B00;--ac:#3E7C64;
+--display:"Fraunces",Georgia,serif;--body:"Source Sans 3",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b2226;--fg:#eef1ee;--mut:#9fb0a8;--card:#242e33;--line:#35424a;--btn:#F2C94C;--btn-fg:#3a2f00;--ac:#7fc3a6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b2226;--fg:#eef1ee;--mut:#9fb0a8;--card:#242e33;--line:#35424a;--btn:#F2C94C;--btn-fg:#3a2f00;--ac:#7fc3a6;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;padding-block:48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:620px;margin:0 auto;display:grid;gap:20px}
+h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0;color:var(--mut)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px}
+.card h2{margin:0;font-size:1.05rem}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+button,a.b{font:inherit;font-weight:600;border:0;border-radius:8px;padding:.6rem 1.1rem;background:var(--btn);color:var(--btn-fg);cursor:pointer;text-decoration:none}
+button.sec{background:transparent;color:var(--fg);border:1px solid var(--line)}
+code{background:var(--bg);padding:.1rem .35rem;border-radius:4px;font-size:.9em;color:var(--fg)}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+</style>
+<main>
+  <h1>Biblioteca em HTML e JavaScript</h1>
+  <p>Versão sem PHP do sistema: 53 autores, 13 categorias e 65 livros vindos dos seus arquivos .sql. Escolha um perfil de demonstração ou crie sua própria conta.</p>
+  <section class="card">
+    <h2>Entrar com conta de demonstração</h2>
+    <div class="btns">
+      <button id="d-autor" type="button">Entrar como Autor</button>
+      <button id="d-leitor" class="sec" type="button">Entrar como Usuário</button>
+    </div>
+    <p>Autor cadastra livros, autores e exemplares. Usuário consulta o catálogo e favorita. Contas: <code>autor@demo.com</code> e <code>leitor@demo.com</code>, senha <code>123456</code>. Os dados ficam só neste navegador.</p>
+  </section>
+  <div class="btns"><a class="b" href="login.html">Ir para o login</a></div>
+</main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/capas.js"></script>
+<script src="assets/js/db.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function demo(papel,email){var u=DB.usuarioPorEmail(email),id=u?u.id:DB.inserirUsuario({email:email,senha_hash:App.hashSenha('123456'),papel:papel});App.entrarComo(id,email,papel);}
+document.getElementById('d-autor').onclick=function(){demo('autor','autor@demo.com')};
+document.getElementById('d-leitor').onclick=function(){demo('leitor','leitor@demo.com')};
+</script>
+
+</body></html>

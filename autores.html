@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="suave">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2F3E46">
+  <title>Autores · Biblioteca Comunitária</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    // aplica o tema salvo antes de renderizar (evita "piscar")
+    try { document.documentElement.dataset.tema = localStorage.getItem('tema') || 'suave'; } catch (e) {}
+  </script>
+</head>
+<body>
+<div id="app"></div>
+<noscript><p style="padding:1rem">Ative o JavaScript para usar a Biblioteca.</p></noscript>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/capas.js"></script>
+<script src="assets/js/db.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/admin.js"></script>
+<script>Paginas.autores();</script>
+</body>
+</html>
